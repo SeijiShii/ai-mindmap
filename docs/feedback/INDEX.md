@@ -16,6 +16,10 @@
 | 003 | 003_feedback_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | scrub/フォールバック |
 | 004 | 004_feedback_E2E_TEST.md | E2E_TEST | 設計済 | 2026-06-19 | リアクション/バグ報告 |
 
+
+| 101 | 101_feedback_IMPL_REPORT.md | IMPL_REPORT | 実装(コア) | 2026-06-19 | 1 ケース green |
+| 102 | 102_feedback_UNIT_TEST_REPORT.md | UNIT_TEST_REPORT | 実装(コア) | 2026-06-19 | 100% |
+
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
 |---|---|---|---|---|---|

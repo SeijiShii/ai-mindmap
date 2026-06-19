@@ -16,6 +16,10 @@
 | 003 | 003_live-capture_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | フォールバック/デバウンス |
 | 004 | 004_live-capture_E2E_TEST.md | E2E_TEST | 設計済 | 2026-06-19 | テキスト経路 + 視覚 L1/L2 |
 
+
+| 101 | 101_live-capture_IMPL_REPORT.md | IMPL_REPORT | 実装(コア) | 2026-06-19 | 4 ケース green |
+| 102 | 102_live-capture_UNIT_TEST_REPORT.md | UNIT_TEST_REPORT | 実装(コア) | 2026-06-19 | 100% |
+
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
 |---|---|---|---|---|---|

@@ -14,15 +14,15 @@
 ## 機能フォルダ
 | 優先度 | 基盤 | フォルダ | 状態 | 設計完了 | 改修件数 | バグ修正件数 | クレーム件数 | INDEX |
 |---|---|---|---|---|---|---|---|---|
-| 3 | ❌ | [live-capture](./live-capture/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./live-capture/INDEX.md) |
-| 3 | ❌ | [mindmap-canvas](./mindmap-canvas/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./mindmap-canvas/INDEX.md) |
-| 3 | ❌ | [map-management](./map-management/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./map-management/INDEX.md) |
+| 3 | ❌ | [live-capture](./live-capture/) | 実装(コア) | 2026-06-19 | 0 | 0 | 0 | [INDEX](./live-capture/INDEX.md) |
+| 3 | ❌ | [mindmap-canvas](./mindmap-canvas/) | 実装(コア) | 2026-06-19 | 0 | 0 | 0 | [INDEX](./mindmap-canvas/INDEX.md) |
+| 3 | ❌ | [map-management](./map-management/) | 実装(コア) | 2026-06-19 | 0 | 0 | 0 | [INDEX](./map-management/INDEX.md) |
 | 4 | ❌ | [ai-structuring](./ai-structuring/) | 実装(コア) | 2026-06-19 | 0 | 0 | 0 | [INDEX](./ai-structuring/INDEX.md) |
-| 4 | ❌ | [ai-expand](./ai-expand/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./ai-expand/INDEX.md) |
-| 4 | ❌ | [export](./export/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./export/INDEX.md) |
-| 4 | ❌ | [billing](./billing/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./billing/INDEX.md) |
-| 4 | ❌ | [feedback](./feedback/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./feedback/INDEX.md) |
-| 4 | ❌ | [legal](./legal/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./legal/INDEX.md) |
+| 4 | ❌ | [ai-expand](./ai-expand/) | 実装(コア) | 2026-06-19 | 0 | 0 | 0 | [INDEX](./ai-expand/INDEX.md) |
+| 4 | ❌ | [export](./export/) | 実装(コア) | 2026-06-19 | 0 | 0 | 0 | [INDEX](./export/INDEX.md) |
+| 4 | ❌ | [billing](./billing/) | 実装(コア) | 2026-06-19 | 0 | 0 | 0 | [INDEX](./billing/INDEX.md) |
+| 4 | ❌ | [feedback](./feedback/) | 実装(コア) | 2026-06-19 | 0 | 0 | 0 | [INDEX](./feedback/INDEX.md) |
+| 4 | ❌ | [legal](./legal/) | 実装(コア) | 2026-06-19 | 0 | 0 | 0 | [INDEX](./legal/INDEX.md) |
 
 ## 横断フォルダ
 | 優先度 | フォルダ | 状態 | 設計完了 | INDEX |

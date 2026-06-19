@@ -16,6 +16,10 @@
 | 003 | 003_legal_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | 削除/隔離 |
 | 004 | 004_legal_E2E_TEST.md | E2E_TEST | 設計済 | 2026-06-19 | 到達性(O55)+削除隔離 |
 
+
+| 101 | 101_legal_IMPL_REPORT.md | IMPL_REPORT | 実装(コア) | 2026-06-19 | 2 ケース green |
+| 102 | 102_legal_UNIT_TEST_REPORT.md | UNIT_TEST_REPORT | 実装(コア) | 2026-06-19 | 100% |
+
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
 |---|---|---|---|---|---|

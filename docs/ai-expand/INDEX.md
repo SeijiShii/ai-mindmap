@@ -16,6 +16,10 @@
 | 003 | 003_ai-expand_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | 4種kind/gaps/quota |
 | 004 | 004_ai-expand_E2E_TEST.md | E2E_TEST | 設計済 | 2026-06-19 | 広げる/観点 + 視覚 |
 
+
+| 101 | 101_ai-expand_IMPL_REPORT.md | IMPL_REPORT | 実装(コア) | 2026-06-19 | 2 ケース green |
+| 102 | 102_ai-expand_UNIT_TEST_REPORT.md | UNIT_TEST_REPORT | 実装(コア) | 2026-06-19 | 100% |
+
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
 |---|---|---|---|---|---|
