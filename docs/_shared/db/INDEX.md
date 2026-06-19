@@ -14,6 +14,8 @@ DB スキーマ・マイグレーション（Neon + Drizzle）。maps / nodes / 
 | 001 | 001__shared_db_SPEC.md | SPEC | 設計済 | 2026-06-19 | スキーマ仕様(5テーブル + 所有者強制) |
 | 002 | 002__shared_db_PLAN.md | PLAN | 設計済 | 2026-06-19 | 実装計画(schema/client/withOwner) |
 | 003 | 003__shared_db_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | 単体テスト計画 |
+| 101 | 101__shared_db_IMPL_REPORT.md | IMPL_REPORT | 実装完了 | 2026-06-19 | 15/15 test green |
+| 102 | 102__shared_db_UNIT_TEST_REPORT.md | UNIT_TEST_REPORT | 実装完了 | 2026-06-19 | 100% |
 | — | (E2E は cross-cutting でスキップ) | | | | |
 
 ## 関連
