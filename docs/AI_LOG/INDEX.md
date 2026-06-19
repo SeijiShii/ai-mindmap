@@ -1,8 +1,8 @@
 # AI_LOG インデックス — ai-mindmap
 
 **最終更新**: 2026-06-19
-**総セッション数**: 23
-**総 decision 数**: 57
+**総セッション数**: 24
+**総 decision 数**: 58
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -14,6 +14,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260619_024_tdd__shared_ai-client.md](./D20260619_024_tdd__shared_ai-client.md) | 2026-06-19 | /flow:tdd | _shared/ai-client | D20260619-058 | 完了 |
 | [D20260619_023_tdd__shared_cost-tracking.md](./D20260619_023_tdd__shared_cost-tracking.md) | 2026-06-19 | /flow:tdd | _shared/cost-tracking | D20260619-057 | 完了 |
 | [D20260619_022_tdd__shared_types.md](./D20260619_022_tdd__shared_types.md) | 2026-06-19 | /flow:tdd | _shared/types | D20260619-056 | 完了 |
 | [D20260619_021_tdd__shared_db.md](./D20260619_021_tdd__shared_db.md) | 2026-06-19 | /flow:tdd | _shared/db | D20260619-053〜055 | 完了 |

@@ -14,6 +14,8 @@ OpenAI クライアントラッパ。server side、store=false、送信前 PII s
 | 001 | 001__shared_ai-client_SPEC.md | SPEC | 設計済 | 2026-06-19 | OpenAI ラッパ(store=false/scrub/Zod) |
 | 002 | 002__shared_ai-client_PLAN.md | PLAN | 設計済 | 2026-06-19 | openai/pii-scrub/call-* |
 | 003 | 003__shared_ai-client_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | injection/PII/parse テスト |
+| 101 | 101__shared_ai-client_IMPL_REPORT.md | IMPL_REPORT | 実装完了 | 2026-06-19 | 9/9 green |
+| 102 | 102__shared_ai-client_UNIT_TEST_REPORT.md | UNIT_TEST_REPORT | 実装完了 | 2026-06-19 | 100% |
 
 ## 関連
 - 親 concept: `../../concept.md` §1.3.2 ai-client 行
