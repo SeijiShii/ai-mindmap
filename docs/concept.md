@@ -139,6 +139,20 @@ api/                     # Vercel Functions（ai-structuring / ai-expand / billi
 | 運用・監視 | Sentry エラー監視 + 自前コストログ積算 + 無料枠超過アラート | 個人運用、無料枠厳守の継続判断（§4.6） |
 | データ可搬性 | ユーザーが自分のマップを画像/MD/アウトラインで持ち出せる（消去権はセルフサービス） | 撤退リスク最小化、O12 データ主体権利 |
 
+<!-- auto-generated-start -->
+### 3.X セキュリティ要件 (auto-added by /flow:secure 2026-06-19)
+
+設計レベル脆弱性レビュー（`SECURITY_REVIEW_20260619.md`）で検出した Critical/High を要件化:
+
+- **[SEC-001] O23 認可・所有者スコープ**: 全マップ/ノード/エッジ API で `owner = clerk_user_id` を強制（DB レベルの所有者チェック / RLS 相当 + サーバ側 `withOwner` ラッパ）。匿名ゲスト→アカウント連携時も所有者整合を保つ。他ユーザーのマップが見えてはならない（複数ユーザー前提）
+- **[SEC-002] O24 入力検証**: (1) AI 送信テキストの **prompt injection 耐性**（システムプロンプト分離 / 出力を構造化 JSON に制約 / 信頼境界を明示）、(2) ノードテキストのキャンバス描画は XSS セーフ（生 HTML 注入禁止、sanitize）、(3) **エクスポートの injection 対策**（CSV は `= + - @` 始まりをエスケープ、Markdown/アウトラインは安全生成）、(4) API 入力は Zod 等のスキーマで一元検証
+- **[SEC-003] O26 PII ログマスキング (法令必須)**: Sentry `beforeSend` 等でログ/エラーから思考内容・PII をマスク。エラーメッセージに DB 内容や本文を含めない。アナリティクスイベントに本文/PII を入れない（cookieless 匿名 ID のみ）。思考内容は機微情報のため送信前 scrub を徹底
+- **[SEC-004] O27 レート制限（AI コスト爆発防止）**: `/api/structure` `/api/expand` は **ユーザー単位 + IP 単位のレート制限**必須（例: Upstash Ratelimit / Vercel Edge）。ライブ逐次マージは高頻度呼び出しのため、無料枠トークン上限（§4.6.2）と二重防御。未認証経路は最小化、ボット対策（Turnstile）を公開フォームに
+
+> O28 依存ライブラリ CVE スキャンは実装後に `/flow:secure --phase=deps` で実施（現時点 lockfile 不在）。
+> O25 秘密情報管理 (§4.5.3/§10.7)・O54 DSR 履行可能性 (§9.3 ゲスト特例) は設計で対応済み。
+<!-- auto-generated-end -->
+
 ## 4. 全体アーキテクチャ
 
 ```
@@ -400,6 +414,46 @@ api/                     # Vercel Functions（ai-structuring / ai-expand / billi
 - **推奨**: `/flow:design` フェーズで世界観確定と合わせて決める（低優先）
 - **判断期限**: デザインフェーズ
 - **担当**: 本人
+
+### [論点-005] [SEC-001] O23 認可・所有者スコープ: High
+- **status**: `accepted-as-requirement`
+- **status 履歴**: 2026-06-19 open → 2026-06-19 accepted-as-requirement (concept §3.X に要件追記)
+- **影響範囲**: §3.X, §5, _shared/db, _shared/auth, map-management
+- **観点 ID**: O23_authorization_check / severity: High
+- **検出根拠**: 複数ユーザー前提だが SPEC に RLS/所有者チェック設計が未明示（user_id 列のみ）
+- **推奨**: DB レベル所有者チェック + サーバ側 `withOwner` ラッパ必須化（§3.X SEC-001）
+- **判断期限**: _shared/db / _shared/auth 設計時
+- **L1 レポート**: `./SECURITY_REVIEW_20260619.md#sec-001`
+
+### [論点-006] [SEC-002] O24 入力検証 (prompt injection / XSS / export injection): High
+- **status**: `accepted-as-requirement`
+- **status 履歴**: 2026-06-19 open → 2026-06-19 accepted-as-requirement (concept §3.X に要件追記)
+- **影響範囲**: §3.X, ai-structuring, ai-expand, mindmap-canvas, export
+- **観点 ID**: O24_input_validation / severity: High
+- **検出根拠**: AI 送信テキスト / キャンバス描画 / エクスポートの入力検証が SPEC 未対応
+- **推奨**: prompt injection 耐性 + XSS sanitize + CSV/MD export エスケープ + Zod 入力スキーマ（§3.X SEC-002）
+- **判断期限**: ai-structuring / export 設計時
+- **L1 レポート**: `./SECURITY_REVIEW_20260619.md#sec-002`
+
+### [論点-007] [SEC-003] O26 PII ログマスキング: High (法令必須)
+- **status**: `accepted-as-requirement`
+- **status 履歴**: 2026-06-19 open → 2026-06-19 accepted-as-requirement (concept §3.X に要件追記)
+- **影響範囲**: §3.X, §9, _shared/ai-client, 監視(Sentry)
+- **観点 ID**: O26_pii_logging / severity: High / legal_required: true
+- **検出根拠**: AI 送信前 scrub は記載あるが Sentry beforeSend 等のログ PII マスキングが未明示
+- **推奨**: Sentry beforeSend で思考内容/PII マスク + エラーに本文含めない + 匿名 ID のみ計測（§3.X SEC-003）
+- **判断期限**: _shared/ai-client / 監視設定時
+- **L1 レポート**: `./SECURITY_REVIEW_20260619.md#sec-003`
+
+### [論点-008] [SEC-004] O27 レート制限（AI コスト爆発防止）: High
+- **status**: `accepted-as-requirement`
+- **status 履歴**: 2026-06-19 open → 2026-06-19 accepted-as-requirement (concept §3.X に要件追記)
+- **影響範囲**: §3.X, §4.6.2, ai-structuring, ai-expand, billing
+- **観点 ID**: O27_rate_limit_scope / severity: High
+- **検出根拠**: ライブ高頻度の AI エンドポイントにレート制限が SPEC 未対応（コスト爆発・乱用リスク）
+- **推奨**: `/api/structure` `/api/expand` にユーザー/IP レート制限 + 無料枠トークン上限と二重防御（§3.X SEC-004）
+- **判断期限**: ai-structuring / billing 設計時
+- **L1 レポート**: `./SECURITY_REVIEW_20260619.md#sec-004`
 
 ## 9. 法務・コンプライアンス書類
 
