@@ -11,7 +11,9 @@
 ## ファイル一覧（番号順）
 | 番号 | ファイル | 種別 | 状態 | 最終更新 | 短い説明 |
 |---|---|---|---|---|---|
-| (まだ設計文書なし。`/flow:feature _shared/ui` で生成) |
+| 001 | 001__shared_ui_SPEC.md | SPEC | 設計済 | 2026-06-19 | UI 基盤(トークン+コンポ+イラスト) |
+| 002 | 002__shared_ui_PLAN.md | PLAN | 設計済 | 2026-06-19 | tokens/components/illustrations |
+| 003 | 003__shared_ui_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | コンポーネントテスト |
 
 ## 関連
 - 親 concept: `../../concept.md` §1.3.2 ui 行

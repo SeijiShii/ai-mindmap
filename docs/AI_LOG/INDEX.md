@@ -1,8 +1,8 @@
 # AI_LOG インデックス — ai-mindmap
 
 **最終更新**: 2026-06-19
-**総セッション数**: 6
-**総 decision 数**: 24
+**総セッション数**: 7
+**総 decision 数**: 26
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -14,6 +14,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260619_007_feature__shared_ui.md](./D20260619_007_feature__shared_ui.md) | 2026-06-19 | /flow:feature | _shared/ui | D20260619-025〜026 | 完了 |
 | [D20260619_006_feature__shared_types.md](./D20260619_006_feature__shared_types.md) | 2026-06-19 | /flow:feature | _shared/types | D20260619-023〜024 | 完了 |
 | [D20260619_005_feature__shared_db.md](./D20260619_005_feature__shared_db.md) | 2026-06-19 | /flow:feature | _shared/db | D20260619-020〜022 | 完了 |
 | [D20260619_004_design_system.md](./D20260619_004_design_system.md) | 2026-06-19 | /flow:design | system | D20260619-018〜019 | SoT完了/視覚未 |
