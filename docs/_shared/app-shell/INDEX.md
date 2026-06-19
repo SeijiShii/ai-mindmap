@@ -11,7 +11,10 @@
 ## ファイル一覧（番号順）
 | 番号 | ファイル | 種別 | 状態 | 最終更新 | 短い説明 |
 |---|---|---|---|---|---|
-| (まだ設計文書なし。`/flow:feature _shared/app-shell` で生成) |
+| 001 | 001__shared_app-shell_SPEC.md | SPEC | 設計済 | 2026-06-19 | 合成レイヤ(O57) |
+| 002 | 002__shared_app-shell_PLAN.md | PLAN | 設計済 | 2026-06-19 | 合成ルート/API束ね/scaffold |
+| 003 | 003__shared_app-shell_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | routes/providers/401 |
+| 004 | 004__shared_app-shell_E2E_TEST.md | E2E_TEST | 設計済 | 2026-06-19 | 統合スモーク(コア一気通貫) |
 
 ## 関連
 - 親 concept: `../../concept.md` §1.3.2 app-shell 行
