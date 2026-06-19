@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+# Build
+dist/
+.vercel/
+# Env / secrets
+.env
+.env.*.local
+.env.local
+# Logs
+*.log
+# OS
+.DS_Store
+# Exports (revenue/data, not version-controlled)
+exports/
