@@ -376,6 +376,7 @@ api/                     # Vercel Functions（ai-structuring / ai-expand / billi
 ## 8. 未決事項（論点リスト）
 
 ### [論点-001] AI 無料枠のトークン量と PWYW 追加枠の設計
+- **status**: 暫定確定 (2026-06-19) — 月間無料 50,000 トークン（`MONTHLY_FREE_TOKENS`）/ 100 円追加枠 10,000 トークン（`TOKENS_PER_PACK`）で実装。実利用とコスト実測で `/flow:revise` 調整余地（.env/定数で可変）
 - **影響範囲**: §4.6.2, billing, _shared/cost-tracking
 - **詰めるべき問い**:
   1. 月間無料 AI トークン枠を何トークンにするか（≒ 何分のライブ会議相当か）
@@ -389,6 +390,7 @@ api/                     # Vercel Functions（ai-structuring / ai-expand / billi
 - **担当**: 本人
 
 ### [論点-002] ライブ逐次マージの「矛盾なくマージ」UX/AI 設計
+- **status**: ✅ resolved (2026-06-19) — 「追加のみマージ + status=suggested + 承認」を採用・実装（ai-structuring/merge.ts + mindmap-canvas）。既存（人編集）を壊さない。重複は正規化テキストで dedup + 上限。テスト green
 - **影響範囲**: ai-structuring（コア差別化）
 - **詰めるべき問い**:
   1. 既存ツリー（人が手編集済み）に新テキスト要点をどう差分マージするか（プロンプト設計 / ツリー diff アルゴリズム）

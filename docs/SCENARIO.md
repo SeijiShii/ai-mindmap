@@ -58,12 +58,13 @@ AI と人が往復で育てる共同編集型マインドマップの MVP を、
 ## 5. 現在地カーソル
 
 <!-- AUTO-GENERATED:BEGIN scenario-cursor -->
-- 現在フェーズ: Phase 1 (概念設計)
-- 進行中ターゲット: concept (初回生成完了)
-- 最終更新セッション: D20260619_001_concept_initial
+- 現在フェーズ: Phase 3 (実装) ほぼ完了 → Phase 4 (公開準備) へ
+- 進行中ターゲット: 全 17 対象 実装済（logic/composition/screens, 112 tests green, vite build 成功, deps Critical/High 0）
+- 最終更新セッション: D20260619_034_secure_deps
 - 最終更新時刻: 2026-06-19
-- 完了フェーズ: []
-- 次の推奨コマンド: /flow:estimate（初回見積）→ /flow:design（デザインシステム）→ /flow:feature（基盤から設計）
+- 完了フェーズ: [Phase 1 概念, Phase 1.5 デザインSoT, Phase 2 設計, Phase 3 実装(no-keyスコープ)]
+- 次の推奨コマンド: /flow:release（実 API キー FILL → ローカル実機確認 → デプロイ）+ /flow:wording（UI 文言の声を仕上げ）。視覚レビュー(/flow:design --review-only)と E2E(/flow:e2e)は実 Clerk キーでアプリ起動後
+- 残（要・実キー/人間）: 実キー(OpenAI/Clerk/Neon/Stripe) / 視覚デザインレビュー / E2E / wording / 課金 live 化
 <!-- AUTO-GENERATED:END scenario-cursor -->
 
 ## 6. 変更履歴
