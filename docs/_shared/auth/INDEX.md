@@ -14,6 +14,8 @@
 | 001 | 001__shared_auth_SPEC.md | SPEC | 設計済 | 2026-06-19 | Clerk匿名ゲスト→段階認証+withOwner |
 | 002 | 002__shared_auth_PLAN.md | PLAN | 設計済 | 2026-06-19 | guest-session/get-owner/ensure-user |
 | 003 | 003__shared_auth_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | 匿名→authed 実経路検証(P4.46) |
+| 101 | 101__shared_auth_IMPL_REPORT.md | IMPL_REPORT | 実装完了 | 2026-06-19 | 6/6 green, P4.46 実コード |
+| 102 | 102__shared_auth_UNIT_TEST_REPORT.md | UNIT_TEST_REPORT | 実装完了 | 2026-06-19 | 100% |
 
 ## 関連
 - 親 concept: `../../concept.md` §1.3.2 auth 行

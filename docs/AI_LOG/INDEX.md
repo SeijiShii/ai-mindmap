@@ -1,8 +1,8 @@
 # AI_LOG インデックス — ai-mindmap
 
 **最終更新**: 2026-06-19
-**総セッション数**: 25
-**総 decision 数**: 59
+**総セッション数**: 27
+**総 decision 数**: 62
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -14,6 +14,8 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260619_027_tdd__shared_auth.md](./D20260619_027_tdd__shared_auth.md) | 2026-06-19 | /flow:tdd | _shared/auth | D20260619-062 | 完了 |
+| [D20260619_026_resume_continuous.md](./D20260619_026_resume_continuous.md) | 2026-06-19 | /flow:auto | continuous | D20260619-060〜061 | 進行中 |
 | [D20260619_025_tdd__shared_ui.md](./D20260619_025_tdd__shared_ui.md) | 2026-06-19 | /flow:tdd | _shared/ui | D20260619-059 | 完了 |
 | [D20260619_024_tdd__shared_ai-client.md](./D20260619_024_tdd__shared_ai-client.md) | 2026-06-19 | /flow:tdd | _shared/ai-client | D20260619-058 | 完了 |
 | [D20260619_023_tdd__shared_cost-tracking.md](./D20260619_023_tdd__shared_cost-tracking.md) | 2026-06-19 | /flow:tdd | _shared/cost-tracking | D20260619-057 | 完了 |
