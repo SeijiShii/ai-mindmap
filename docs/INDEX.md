@@ -14,7 +14,7 @@
 ## 機能フォルダ
 | 優先度 | 基盤 | フォルダ | 状態 | 設計完了 | 改修件数 | バグ修正件数 | クレーム件数 | INDEX |
 |---|---|---|---|---|---|---|---|---|
-| 3 | ❌ | [live-capture](./live-capture/) | 計画中 | ❌ | 0 | 0 | 0 | [INDEX](./live-capture/INDEX.md) |
+| 3 | ❌ | [live-capture](./live-capture/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./live-capture/INDEX.md) |
 | 3 | ❌ | [mindmap-canvas](./mindmap-canvas/) | 計画中 | ❌ | 0 | 0 | 0 | [INDEX](./mindmap-canvas/INDEX.md) |
 | 3 | ❌ | [map-management](./map-management/) | 計画中 | ❌ | 0 | 0 | 0 | [INDEX](./map-management/INDEX.md) |
 | 4 | ❌ | [ai-structuring](./ai-structuring/) | 計画中 | ❌ | 0 | 0 | 0 | [INDEX](./ai-structuring/INDEX.md) |

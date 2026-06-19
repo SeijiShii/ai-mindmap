@@ -11,7 +11,10 @@
 ## ファイル一覧（番号順）
 | 番号 | ファイル | 種別 | 状態 | 最終更新 | 短い説明 |
 |---|---|---|---|---|---|
-| (まだ設計文書なし。`/flow:feature live-capture` で生成) |
+| 001 | 001_live-capture_SPEC.md | SPEC | 設計済 | 2026-06-19 | Web Speech+テキスト ライブ取込 |
+| 002 | 002_live-capture_PLAN.md | PLAN | 設計済 | 2026-06-19 | useSpeech/delta-buffer/send |
+| 003 | 003_live-capture_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | フォールバック/デバウンス |
+| 004 | 004_live-capture_E2E_TEST.md | E2E_TEST | 設計済 | 2026-06-19 | テキスト経路 + 視覚 L1/L2 |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
@@ -28,7 +31,7 @@
 - 仕様詳細 → 001_*_SPEC.md (まだ未生成)
 
 ## 機能性質タグ
-- (まだ未確定。`/flow:feature` 実行時に決定)
+- feature, realtime, offline-critical(部分)
 
 <!-- auto-generated-end -->
 
