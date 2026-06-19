@@ -22,7 +22,7 @@
 | 4 | ❌ | [export](./export/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./export/INDEX.md) |
 | 4 | ❌ | [billing](./billing/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./billing/INDEX.md) |
 | 4 | ❌ | [feedback](./feedback/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./feedback/INDEX.md) |
-| 4 | ❌ | [legal](./legal/) | 計画中 | ❌ | 0 | 0 | 0 | [INDEX](./legal/INDEX.md) |
+| 4 | ❌ | [legal](./legal/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./legal/INDEX.md) |
 
 ## 横断フォルダ
 | 優先度 | フォルダ | 状態 | 設計完了 | INDEX |

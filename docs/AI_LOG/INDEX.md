@@ -1,8 +1,8 @@
 # AI_LOG インデックス — ai-mindmap
 
 **最終更新**: 2026-06-19
-**総セッション数**: 18
-**総 decision 数**: 48
+**総セッション数**: 19
+**総 decision 数**: 50
 
 > このフォルダは AI 主導の自走 / 後追いトレースを目的とする詳細ログ。
 > セッションごとに 1 ファイル、append-only、過去ファイルは削除・編集禁止。
@@ -14,6 +14,7 @@
 
 | ファイル | 実行日 | コマンド | 対象 | decision 範囲 | 状態 |
 |---|---|---|---|---|---|
+| [D20260619_019_feature_legal.md](./D20260619_019_feature_legal.md) | 2026-06-19 | /flow:feature | legal | D20260619-049〜050 | 完了 |
 | [D20260619_018_feature_feedback.md](./D20260619_018_feature_feedback.md) | 2026-06-19 | /flow:feature | feedback | D20260619-047〜048 | 完了 |
 | [D20260619_017_feature_billing.md](./D20260619_017_feature_billing.md) | 2026-06-19 | /flow:feature | billing | D20260619-045〜046 | 完了 |
 | [D20260619_016_feature_export.md](./D20260619_016_feature_export.md) | 2026-06-19 | /flow:feature | export | D20260619-043〜044 | 完了 |
