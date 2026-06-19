@@ -3,6 +3,9 @@ import { MemoryRouter, Routes, Route, Link } from "react-router-dom";
 import { AppHeader } from "../components/ui/AppHeader";
 import { InfoButton } from "../components/ui/InfoButton";
 import { MapPage } from "../features/mindmap-canvas/MapPage";
+import { PrivacyPage } from "../features/legal/pages/Privacy";
+import { TermsPage } from "../features/legal/pages/Terms";
+import { SctPage } from "../features/legal/pages/Sct";
 
 /**
  * Composition root (O57): providers + router + app shell. Routes wire feature
@@ -35,17 +38,11 @@ export function AppRoutes() {
         path="/map/:id"
         element={<MapPage nodes={[]} edges={[]} onSend={async () => {}} />}
       />
-      <Route
-        path="/legal/privacy"
-        element={<main className="p-4">プライバシーポリシー</main>}
-      />
-      <Route
-        path="/legal/terms"
-        element={<main className="p-4">利用規約</main>}
-      />
+      <Route path="/legal/privacy" element={<PrivacyPage />} />
+      <Route path="/legal/terms" element={<TermsPage />} />
       <Route
         path="/legal/specified-commercial-transactions"
-        element={<main className="p-4">特定商取引法に基づく表記</main>}
+        element={<SctPage />}
       />
       <Route
         path="*"
