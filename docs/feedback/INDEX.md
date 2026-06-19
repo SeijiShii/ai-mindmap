@@ -11,7 +11,10 @@
 ## ファイル一覧（番号順）
 | 番号 | ファイル | 種別 | 状態 | 最終更新 | 短い説明 |
 |---|---|---|---|---|---|
-| (まだ設計文書なし。`/flow:feature feedback` で生成) |
+| 001 | 001_feedback_SPEC.md | SPEC | 設計済 | 2026-06-19 | 👍/👎+バグ報告(PII scrub) |
+| 002 | 002_feedback_PLAN.md | PLAN | 設計済 | 2026-06-19 | scrub/send/widget |
+| 003 | 003_feedback_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | scrub/フォールバック |
+| 004 | 004_feedback_E2E_TEST.md | E2E_TEST | 設計済 | 2026-06-19 | リアクション/バグ報告 |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
@@ -28,7 +31,7 @@
 - 仕様詳細 → 001_*_SPEC.md (まだ未生成)
 
 ## 機能性質タグ
-- (まだ未確定。`/flow:feature` 実行時に決定)
+- feature
 
 <!-- auto-generated-end -->
 
