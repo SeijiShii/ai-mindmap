@@ -33,7 +33,7 @@
 | 2 | [_shared/auth](./_shared/auth/) | 実装完了 | 2026-06-19 | [INDEX](./_shared/auth/INDEX.md) |
 | 2 | [_shared/ai-client](./_shared/ai-client/) | 実装完了 | 2026-06-19 | [INDEX](./_shared/ai-client/INDEX.md) |
 | 2 | [_shared/cost-tracking](./_shared/cost-tracking/) | 実装完了 | 2026-06-19 | [INDEX](./_shared/cost-tracking/INDEX.md) |
-| 5 | [_shared/app-shell](./_shared/app-shell/) | 設計済 | 2026-06-19 | [INDEX](./_shared/app-shell/INDEX.md) |
+| 5 | [_shared/app-shell](./_shared/app-shell/) | 実装(合成) | 2026-06-19 | [INDEX](./_shared/app-shell/INDEX.md) |
 
 ## 見積もり
 | ファイル | 種別 | 最終更新 |

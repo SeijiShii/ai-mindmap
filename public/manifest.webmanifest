@@ -1,0 +1,9 @@
+{
+  "name": "AIと一緒に描くマインドマップ",
+  "short_name": "AIマインドマップ",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF9F6",
+  "theme_color": "#3B6E8F",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}
