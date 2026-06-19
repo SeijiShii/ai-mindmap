@@ -20,7 +20,7 @@
 | 4 | ❌ | [ai-structuring](./ai-structuring/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./ai-structuring/INDEX.md) |
 | 4 | ❌ | [ai-expand](./ai-expand/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./ai-expand/INDEX.md) |
 | 4 | ❌ | [export](./export/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./export/INDEX.md) |
-| 4 | ❌ | [billing](./billing/) | 計画中 | ❌ | 0 | 0 | 0 | [INDEX](./billing/INDEX.md) |
+| 4 | ❌ | [billing](./billing/) | 設計済 | 2026-06-19 | 0 | 0 | 0 | [INDEX](./billing/INDEX.md) |
 | 4 | ❌ | [feedback](./feedback/) | 計画中 | ❌ | 0 | 0 | 0 | [INDEX](./feedback/INDEX.md) |
 | 4 | ❌ | [legal](./legal/) | 計画中 | ❌ | 0 | 0 | 0 | [INDEX](./legal/INDEX.md) |
 
