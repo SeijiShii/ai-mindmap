@@ -11,7 +11,9 @@ OpenAI クライアントラッパ。server side、store=false、送信前 PII s
 ## ファイル一覧（番号順）
 | 番号 | ファイル | 種別 | 状態 | 最終更新 | 短い説明 |
 |---|---|---|---|---|---|
-| (まだ設計文書なし。`/flow:feature _shared/ai-client` で生成) |
+| 001 | 001__shared_ai-client_SPEC.md | SPEC | 設計済 | 2026-06-19 | OpenAI ラッパ(store=false/scrub/Zod) |
+| 002 | 002__shared_ai-client_PLAN.md | PLAN | 設計済 | 2026-06-19 | openai/pii-scrub/call-* |
+| 003 | 003__shared_ai-client_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | injection/PII/parse テスト |
 
 ## 関連
 - 親 concept: `../../concept.md` §1.3.2 ai-client 行

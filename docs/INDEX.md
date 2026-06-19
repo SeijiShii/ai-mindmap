@@ -31,7 +31,7 @@
 | 1 | [_shared/types](./_shared/types/) | 設計済 | 2026-06-19 | [INDEX](./_shared/types/INDEX.md) |
 | 1 | [_shared/ui](./_shared/ui/) | 設計済 | 2026-06-19 | [INDEX](./_shared/ui/INDEX.md) |
 | 2 | [_shared/auth](./_shared/auth/) | 設計済 | 2026-06-19 | [INDEX](./_shared/auth/INDEX.md) |
-| 2 | [_shared/ai-client](./_shared/ai-client/) | 計画中 | ❌ | [INDEX](./_shared/ai-client/INDEX.md) |
+| 2 | [_shared/ai-client](./_shared/ai-client/) | 設計済 | 2026-06-19 | [INDEX](./_shared/ai-client/INDEX.md) |
 | 2 | [_shared/cost-tracking](./_shared/cost-tracking/) | 計画中 | ❌ | [INDEX](./_shared/cost-tracking/INDEX.md) |
 | 5 | [_shared/app-shell](./_shared/app-shell/) | 計画中 | ❌ | [INDEX](./_shared/app-shell/INDEX.md) |
 
