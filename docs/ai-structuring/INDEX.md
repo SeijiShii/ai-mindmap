@@ -15,6 +15,8 @@
 | 002 | 002_ai-structuring_PLAN.md | PLAN | 設計済 | 2026-06-19 | tree-summary/merge/api |
 | 003 | 003_ai-structuring_UNIT_TEST.md | UNIT_TEST | 設計済 | 2026-06-19 | マージ/injection/quota |
 | 004 | 004_ai-structuring_E2E_TEST.md | E2E_TEST | 設計済 | 2026-06-19 | 育つ/人編集保護 + 視覚 |
+| 101 | 101_ai-structuring_IMPL_REPORT.md | IMPL_REPORT | 実装(コア) | 2026-06-19 | 9/9 green, API は app-shell |
+| 102 | 102_ai-structuring_UNIT_TEST_REPORT.md | UNIT_TEST_REPORT | 実装(コア) | 2026-06-19 | 100% |
 
 ## サブフォルダ（改修・バグ修正・クレーム判定履歴）
 | パス | 種別 | issue/slug | 状態 | 概要 | INDEX |
