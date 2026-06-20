@@ -9,5 +9,14 @@ cd "$(dirname "$0")/.."
 echo "▸ syncing production env → Vercel"
 bash scripts/sync-prod-env.sh
 
-echo "▸ deploying to production"
-vercel deploy --prod --yes
+echo "▸ building (Build Output API, esbuild-bundled functions → no O51 ERR_MODULE_NOT_FOUND)"
+rm -rf .vercel/output
+node scripts/vercel-build.mjs
+
+# Guard: no unbundled raw api/*.js left, function count within Hobby limit (12).
+nfunc=$(find .vercel/output/functions -name '*.func' -type d | wc -l)
+echo "  functions: $nfunc"
+[ "$nfunc" -le "${MAX_FUNCTIONS:-12}" ] || { echo "✗ too many functions ($nfunc > ${MAX_FUNCTIONS:-12})"; exit 1; }
+
+echo "▸ deploying prebuilt output to production"
+vercel deploy --prebuilt --prod --yes
