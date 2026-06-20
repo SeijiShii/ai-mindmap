@@ -75,6 +75,44 @@ export function serverDeps(
 
   return {
     rateLimited,
+    // §1.7 guest provision: seed the users row with the monthly free allowance so
+    // a fresh guest is not immediately quota-blocked. Idempotent.
+    async ensureUser(ownerId: string) {
+      await db
+        .insert(users)
+        .values({
+          id: ownerId,
+          isGuest: ownerId.startsWith("guest_"),
+          freeTokensRemaining: MONTHLY_FREE_TOKENS,
+          freeTokensResetAt: now(),
+        })
+        .onConflictDoNothing();
+    },
+    // Map detail for the canvas: owner-scoped nodes + edges (SEC-001).
+    async loadMapDetail(mapId: string, ownerId: string) {
+      await assertMapOwner(mapId, ownerId);
+      const [nodeRows, edgeRows] = await Promise.all([
+        db.select().from(nodes).where(eq(nodes.mapId, mapId)),
+        db.select().from(edges).where(eq(edges.mapId, mapId)),
+      ]);
+      return {
+        nodes: nodeRows.map((n) => ({
+          id: n.id,
+          text: n.text,
+          parentId: n.parentId,
+          posX: n.posX,
+          posY: n.posY,
+          source: n.source,
+          status: n.status,
+        })),
+        edges: edgeRows.map((e) => ({
+          id: e.id,
+          sourceNodeId: e.sourceNodeId,
+          targetNodeId: e.targetNodeId,
+          kind: e.kind,
+        })),
+      };
+    },
     async loadNodes(mapId: string, ownerId: string) {
       await assertMapOwner(mapId, ownerId);
       const rows = await db.select().from(nodes).where(eq(nodes.mapId, mapId));

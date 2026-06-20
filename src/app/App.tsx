@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter, Routes, Route, Link } from "react-router-dom";
 import { AppHeader } from "../components/ui/AppHeader";
 import { InfoButton } from "../components/ui/InfoButton";
-import { MapPage } from "../features/mindmap-canvas/MapPage";
+import { MapWorkspace } from "../features/mindmap-canvas/MapWorkspace";
 import { PrivacyPage } from "../features/legal/pages/Privacy";
 import { TermsPage } from "../features/legal/pages/Terms";
 import { SctPage } from "../features/legal/pages/Sct";
@@ -35,10 +35,7 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
-      <Route
-        path="/map/:id"
-        element={<MapPage nodes={[]} edges={[]} onSend={async () => {}} />}
-      />
+      <Route path="/map/:id" element={<MapWorkspace />} />
       <Route path="/legal/privacy" element={<PrivacyPage />} />
       <Route path="/legal/terms" element={<TermsPage />} />
       <Route

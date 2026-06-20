@@ -1,32 +1,42 @@
 import { describe, it, expect, vi } from "vitest";
-import { establishGuestSession } from "./guest-session";
+import { ensureGuestToken } from "./guest-session";
 
-describe("establishGuestSession (O22 A bootstrap)", () => {
-  it("fetches a ticket, completes sign-in, and activates the session", async () => {
-    const setActive = vi.fn(async () => {});
-    const sessionId = await establishGuestSession({
-      fetchTicket: async () => ({ ticket: "tkt_1" }),
-      createSignIn: async (t) => {
-        expect(t).toBe("tkt_1");
-        return { createdSessionId: "sess_1" };
-      },
-      setActive,
+describe("ensureGuestToken (§1.7 stable guest, no churn)", () => {
+  it("reuses the stored token without provisioning (no churn)", async () => {
+    const fetchToken = vi.fn(async () => ({ guestToken: "new" }));
+    const store = vi.fn();
+    const tok = await ensureGuestToken({
+      getStored: () => "stored.token",
+      fetchToken,
+      store,
     });
-    expect(sessionId).toBe("sess_1");
-    expect(setActive).toHaveBeenCalledWith("sess_1");
+    expect(tok).toBe("stored.token");
+    expect(fetchToken).not.toHaveBeenCalled();
+    expect(store).not.toHaveBeenCalled();
   });
 
-  it("propagates a ticket fetch failure (no session activated)", async () => {
-    const setActive = vi.fn(async () => {});
+  it("provisions + persists when there is no stored token", async () => {
+    const store = vi.fn();
+    const tok = await ensureGuestToken({
+      getStored: () => null,
+      fetchToken: async () => ({ guestToken: "minted.token" }),
+      store,
+    });
+    expect(tok).toBe("minted.token");
+    expect(store).toHaveBeenCalledWith("minted.token");
+  });
+
+  it("propagates a provision failure (nothing stored)", async () => {
+    const store = vi.fn();
     await expect(
-      establishGuestSession({
-        fetchTicket: async () => {
+      ensureGuestToken({
+        getStored: () => null,
+        fetchToken: async () => {
           throw new Error("guest endpoint 500");
         },
-        createSignIn: async () => ({ createdSessionId: "x" }),
-        setActive,
+        store,
       }),
     ).rejects.toThrow();
-    expect(setActive).not.toHaveBeenCalled();
+    expect(store).not.toHaveBeenCalled();
   });
 });

@@ -1,22 +1,43 @@
+import {
+  getStoredGuestToken,
+  storeGuestToken,
+} from "./guest-store";
+
 /**
- * O22(A) client bootstrap: turn the server-issued sign-in ticket
- * (POST /api/auth/guest → createGuestSession) into a real active Clerk session,
- * so a first-time visitor is authenticated as an anonymous guest without any
- * sign-up. The Clerk hooks are injected (O35) so this orchestration is testable
- * without Clerk. The same userId persists after the guest later links an account
- * (O22 B), so guest data carries over.
+ * §1.7 guest bootstrap (Clerk-decoupled). Returns a stable guest token: reuse the
+ * persisted one if present (no churn), otherwise provision a new one via
+ * POST /api/auth/guest and persist it. The fetch is injected (O35) so the
+ * orchestration is testable without a network/localStorage.
  */
 export interface GuestSessionPorts {
-  fetchTicket: () => Promise<{ ticket: string }>;
-  createSignIn: (ticket: string) => Promise<{ createdSessionId: string }>;
-  setActive: (sessionId: string) => Promise<void>;
+  getStored: () => string | null;
+  fetchToken: () => Promise<{ guestToken: string }>;
+  store: (token: string) => void;
 }
 
-export async function establishGuestSession(
+export async function ensureGuestToken(
   ports: GuestSessionPorts,
 ): Promise<string> {
-  const { ticket } = await ports.fetchTicket();
-  const { createdSessionId } = await ports.createSignIn(ticket);
-  await ports.setActive(createdSessionId);
-  return createdSessionId;
+  const existing = ports.getStored();
+  if (existing) return existing; // stable owner — reuse, no churn
+  const { guestToken } = await ports.fetchToken();
+  ports.store(guestToken);
+  return guestToken;
+}
+
+/** Production ports: localStorage + POST /api/auth/guest. */
+export function browserGuestPorts(): GuestSessionPorts {
+  return {
+    getStored: getStoredGuestToken,
+    store: storeGuestToken,
+    fetchToken: async () => {
+      const stored = getStoredGuestToken();
+      const res = await fetch("/api/auth/guest", {
+        method: "POST",
+        headers: stored ? { authorization: `Bearer ${stored}` } : {},
+      });
+      if (!res.ok) throw new Error(`guest provision failed: ${res.status}`);
+      return res.json();
+    },
+  };
 }

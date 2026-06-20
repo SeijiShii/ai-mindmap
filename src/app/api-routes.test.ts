@@ -31,6 +31,7 @@ describe("makeMapsHandler (O57 / SEC-001)", () => {
     const h = makeMapsHandler({
       verify: async () => null,
       backend: mapsBackend(),
+      loadMapDetail: async () => ({ nodes: [], edges: [] }),
     });
     expect((await h(new Request("https://x/api/maps"))).status).toBe(401);
   });
@@ -41,6 +42,7 @@ describe("makeMapsHandler (O57 / SEC-001)", () => {
         { id: "m1", ownerId: "u1", title: "a" },
         { id: "m2", ownerId: "u2", title: "b" },
       ]),
+      loadMapDetail: async () => ({ nodes: [], edges: [] }),
     });
     const res = await h(new Request("https://x/api/maps"));
     expect((await res.json()).maps.map((m: MapRow) => m.id)).toEqual(["m1"]);
@@ -49,6 +51,7 @@ describe("makeMapsHandler (O57 / SEC-001)", () => {
     const h = makeMapsHandler({
       verify: async () => "u1",
       backend: mapsBackend(),
+      loadMapDetail: async () => ({ nodes: [], edges: [] }),
     });
     const res = await h(
       new Request("https://x/api/maps", {

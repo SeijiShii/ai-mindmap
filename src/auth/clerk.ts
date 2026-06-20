@@ -1,41 +1,31 @@
-import { createClerkClient } from '@clerk/backend';
-import type { SessionVerifier } from './owner';
+import { createClerkClient } from "@clerk/backend";
+import type { SessionVerifier } from "./owner";
+import { bearerToken, verifyGuestToken } from "./guest-token";
 
 /**
- * P4.46 production guest-session path. Real Clerk integration (not a stub): a
- * Clerk-backed SessionVerifier for protected routes, plus server-side creation
- * of an anonymous user + sign-in ticket so guests get a real authenticated
- * session (guest-auth-clerk-scaffold pattern).
+ * Owner resolution for protected routes. Guests use a self-signed guest JWT
+ * (§1.7, Clerk-decoupled, no owner churn); linked accounts use Clerk. The
+ * verifier tries the guest JWT on the Authorization header first, then falls
+ * back to Clerk's authenticateRequest. SEC-001: the subject is always verified
+ * server-side (guest secret / Clerk session), never trusted from raw input.
  */
-
-export function createClerkVerifier(secretKey: string, publishableKey: string): SessionVerifier {
-  const clerk = createClerkClient({ secretKey, publishableKey });
+export function createGuestOrClerkVerifier(
+  guestSecret: string,
+  clerkSecretKey: string,
+  clerkPublishableKey: string,
+): SessionVerifier {
+  const clerk = createClerkClient({
+    secretKey: clerkSecretKey,
+    publishableKey: clerkPublishableKey,
+  });
   return async (req) => {
+    const tok = bearerToken(req);
+    if (tok) {
+      const sub = verifyGuestToken(tok, guestSecret);
+      if (sub) return sub; // valid guest JWT → owner = sub
+    }
+    // Not a guest token → real Clerk session (cookie or Bearer Clerk JWT).
     const res = await clerk.authenticateRequest(req);
-    const auth = res.toAuth();
-    return auth?.userId ?? null;
+    return res.toAuth()?.userId ?? null;
   };
-}
-
-export interface GuestTicket {
-  userId: string;
-  ticket: string;
-}
-
-/**
- * Create an anonymous guest user and a sign-in ticket. The frontend completes
- * the session with signIn.create({ strategy: 'ticket', ticket }). Same Clerk
- * userId persists after account linking, so guest data carries over (O22).
- */
-export async function createGuestSession(secretKey: string): Promise<GuestTicket> {
-  const clerk = createClerkClient({ secretKey });
-  const user = await clerk.users.createUser({
-    skipPasswordRequirement: true,
-    publicMetadata: { guest: true },
-  });
-  const token = await clerk.signInTokens.createSignInToken({
-    userId: user.id,
-    expiresInSeconds: 60 * 10,
-  });
-  return { userId: user.id, ticket: token.token };
 }
