@@ -2,7 +2,6 @@ import { makeCheckoutHandler } from "../../src/app/api-billing";
 import { createClerkVerifier } from "../../src/auth/clerk";
 import { createStripeCheckout } from "../../src/features/billing/stripe-client";
 
-export const config = { runtime: "edge" };
 
 export default async function handler(req: Request): Promise<Response> {
   const env = process.env;

@@ -4,7 +4,6 @@ import { createClerkVerifier } from "../src/auth/clerk";
 import { createOpenAiChat } from "../src/ai/openai";
 import { serverDeps } from "../src/app/server-deps";
 
-export const config = { runtime: "edge" };
 
 export default async function handler(req: Request): Promise<Response> {
   const env = process.env;

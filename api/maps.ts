@@ -3,7 +3,6 @@ import { createDb } from '../src/db/client';
 import { createClerkVerifier } from '../src/auth/clerk';
 import { serverDeps } from '../src/app/server-deps';
 
-export const config = { runtime: 'edge' };
 
 export default async function handler(req: Request): Promise<Response> {
   const env = process.env;

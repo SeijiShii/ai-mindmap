@@ -3,7 +3,6 @@ import { createDb } from "../../src/db/client";
 import { serverDeps } from "../../src/app/server-deps";
 import { verifyStripeWebhook } from "../../src/features/billing/stripe-client";
 
-export const config = { runtime: "edge" };
 
 export default async function handler(req: Request): Promise<Response> {
   const env = process.env;

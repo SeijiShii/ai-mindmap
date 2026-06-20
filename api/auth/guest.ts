@@ -4,7 +4,6 @@ import { ensureUser } from '../../src/auth/ensure-user';
 import { users } from '../../src/db/schema';
 import { eq } from 'drizzle-orm';
 
-export const config = { runtime: 'edge' };
 
 /**
  * P4.46 production guest path: create an anonymous Clerk user + ensure a DB row,
