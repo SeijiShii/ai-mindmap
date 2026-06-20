@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { MemoryRouter, Routes, Route, Link } from "react-router-dom";
 import { AppHeader } from "../components/ui/AppHeader";
@@ -52,7 +53,15 @@ export function AppRoutes() {
   );
 }
 
-export function AppShell({ initialPath = "/" }: { initialPath?: string }) {
+export function AppShell({
+  initialPath = "/",
+  authControl,
+}: {
+  initialPath?: string;
+  /** O22(B) auth control (UserButton / SignIn). Injected from main.tsx so the
+   *  shell stays Clerk-agnostic and renders in tests without a ClerkProvider. */
+  authControl?: ReactNode;
+}) {
   return (
     <QueryClientProvider client={queryClient}>
       <MemoryRouter initialEntries={[initialPath]}>
@@ -60,9 +69,12 @@ export function AppShell({ initialPath = "/" }: { initialPath?: string }) {
           <AppHeader
             title="AIと一緒に描くマインドマップ"
             actions={
-              <InfoButton>
-                会議を聞きながら AI と往復で考えをほどくマインドマップです。
-              </InfoButton>
+              <>
+                <InfoButton>
+                  会議を聞きながら AI と往復で考えをほどくマインドマップです。
+                </InfoButton>
+                {authControl}
+              </>
             }
           />
           <div className="flex-1">
