@@ -13,3 +13,4 @@ dist/
 .DS_Store
 # Exports (revenue/data, not version-controlled)
 exports/
+.vercel

@@ -52,8 +52,12 @@ export interface WebhookEvent {
 }
 
 export interface WebhookDeps {
-  /** Verifies the Stripe signature; throws WebhookSignatureError if invalid. */
-  verifyEvent: (payload: string, signature: string | null) => WebhookEvent;
+  /** Verifies the Stripe signature; throws WebhookSignatureError if invalid.
+   *  Async to support the edge-runtime SubtleCrypto verifier. */
+  verifyEvent: (
+    payload: string,
+    signature: string | null,
+  ) => WebhookEvent | Promise<WebhookEvent>;
   store: ProcessedEventStore;
   grantTopup: (ownerId: string, tokens: number) => Promise<void>;
 }
@@ -65,7 +69,7 @@ export function makeWebhookHandler(deps: WebhookDeps) {
 
     let event: WebhookEvent;
     try {
-      event = deps.verifyEvent(payload, sig);
+      event = await deps.verifyEvent(payload, sig);
     } catch (e) {
       // O64 state 1: invalid signature → 400 (forged / tampered, reject)
       if (e instanceof WebhookSignatureError)
@@ -80,7 +84,11 @@ export function makeWebhookHandler(deps: WebhookDeps) {
     }
 
     // O64 state 3: valid + relevant → idempotent top-up
-    const outcome = await processCheckoutEvent(deps.store, event.id, event.packs);
+    const outcome = await processCheckoutEvent(
+      deps.store,
+      event.id,
+      event.packs,
+    );
     if (outcome.applied) await deps.grantTopup(event.ownerId, outcome.tokens);
     return json({ received: true, applied: outcome.applied }, 200);
   };
