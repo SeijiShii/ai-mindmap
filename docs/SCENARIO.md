@@ -58,13 +58,13 @@ AI と人が往復で育てる共同編集型マインドマップの MVP を、
 ## 5. 現在地カーソル
 
 <!-- AUTO-GENERATED:BEGIN scenario-cursor -->
-- 現在フェーズ: Phase 3 (実装) ほぼ完了 → Phase 4 (公開準備) へ
-- 進行中ターゲット: 全 17 対象 実装済（logic/composition/screens, 112 tests green, vite build 成功, deps Critical/High 0）
-- 最終更新セッション: D20260619_034_secure_deps
-- 最終更新時刻: 2026-06-19
-- 完了フェーズ: [Phase 1 概念, Phase 1.5 デザインSoT, Phase 2 設計, Phase 3 実装(no-keyスコープ)]
-- 次の推奨コマンド: /flow:release（実 API キー FILL → ローカル実機確認 → デプロイ）+ /flow:wording（UI 文言の声を仕上げ）。視覚レビュー(/flow:design --review-only)と E2E(/flow:e2e)は実 Clerk キーでアプリ起動後
-- 残（要・実キー/人間）: 実キー(OpenAI/Clerk/Neon/Stripe) / 視覚デザインレビュー / E2E / wording / 課金 live 化
+- 現在フェーズ: Phase 4 (公開準備) — release-pre full 監査 + drift シューティング完了、no-key Class A 枯渇
+- 進行中ターゲット: 全 17 対象実装 + AUDIT_20260620 検出の 4 High を全実装（rate-limit / Stripe実連携+webhook / Sentry PII マスキング / O22(B)段階認証UI）。136 tests green, build 成功, deps Critical/High 0
+- 最終更新セッション: D20260620_001_resume_continuous
+- 最終更新時刻: 2026-06-20
+- 完了フェーズ: [Phase 1 概念, Phase 1.5 デザインSoT, Phase 2 設計, Phase 3 実装(no-keyスコープ), Phase 4 release-pre 監査+drift解消]
+- 次の推奨コマンド: /flow:release（実 API キー FILL → db:migrate → ローカル実機確認 → デプロイ）。視覚レビュー/E2E/wording は実 Clerk キーでアプリ起動後
+- 残（要・実キー/人間 = Class C）: 実キー(OpenAI/Clerk/Neon/Stripe/Sentry) / db:migrate(processed_events) / 視覚デザインレビュー / E2E / wording / 課金 live 化 / デプロイ
 <!-- AUTO-GENERATED:END scenario-cursor -->
 
 ## 6. 変更履歴

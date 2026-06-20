@@ -404,6 +404,7 @@ api/                     # Vercel Functions（ai-structuring / ai-expand / billi
 - **担当**: 本人
 
 ### [論点-003] feedback-hub の構築状況
+- **status**: ✅ resolved (2026-06-20) — feedback は `FEEDBACK_HUB_URL`（任意 env）経由で hub へ POST する設計で実装済（FeedbackWidget + context.ts）。env 未設定なら no-op（hub 未構築でもアプリは動作）。後追いで hub URL を設定すれば連携開始
 - **影響範囲**: feedback, §6
 - **詰めるべき問い**: 共有 feedback-hub は既存か、本 PJ で別途立ち上げか
 - **推奨**: 既存 hub があれば endpoint 設定のみ。無ければ MVP はローカル即時通知（Slack/メール）のみ、hub 連携は後追い
@@ -411,6 +412,7 @@ api/                     # Vercel Functions（ai-structuring / ai-expand / billi
 - **担当**: 本人
 
 ### [論点-004] ブランド名（短い呼称）
+- **status**: 暫定確定 (2026-06-20) — MVP は説明的タイトル「AIと一緒に描くマインドマップ」で出荷。短縮ブランド名は wording (P4.45) / promote 前に任意で再検討（低優先、ブロッカーではない）
 - **影響範囲**: §1, README, OGP, デザイン
 - **詰めるべき問い**: 「AIと一緒に描くマインドマップ」は説明的タイトル。短いブランド名を付けるか
 - **推奨**: `/flow:design` フェーズで世界観確定と合わせて決める（低優先）
