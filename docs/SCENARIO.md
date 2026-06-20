@@ -58,13 +58,13 @@ AI と人が往復で育てる共同編集型マインドマップの MVP を、
 ## 5. 現在地カーソル
 
 <!-- AUTO-GENERATED:BEGIN scenario-cursor -->
-- 現在フェーズ: Phase 4 (公開準備) — release-pre full 監査 + drift シューティング完了、no-key Class A 枯渇
-- 進行中ターゲット: 全 17 対象実装 + AUDIT_20260620 検出の 4 High を全実装（rate-limit / Stripe実連携+webhook / Sentry PII マスキング / O22(B)段階認証UI）。136 tests green, build 成功, deps Critical/High 0
-- 最終更新セッション: D20260620_001_resume_continuous
+- 現在フェーズ: Phase 4 公開準備 — 本番インフラ稼働済、ただしアプリは feature 未完(コアループ未配線)
+- 進行中ターゲット: https://mindmap.givers.work 本番稼働(SSL/DB/env/6 functions 起動, O51 解消)。残 Class A 2件 = (1) guest JWT auth §1.7 (Clerk prod 422 + owner churn), (2) frontend↔backend 配線(MapPage onSend stub)
+- 最終更新セッション: D20260620_004_release_ai-mindmap
 - 最終更新時刻: 2026-06-20
-- 完了フェーズ: [Phase 1 概念, Phase 1.5 デザインSoT, Phase 2 設計, Phase 3 実装(no-keyスコープ), Phase 4 release-pre 監査+drift解消]
-- 次の推奨コマンド: /flow:release（実 API キー FILL → db:migrate → ローカル実機確認 → デプロイ）。視覚レビュー/E2E/wording は実 Clerk キーでアプリ起動後
-- 残（要・実キー/人間 = Class C）: 実キー(OpenAI/Clerk/Neon/Stripe/Sentry) / db:migrate(processed_events) / 視覚デザインレビュー / E2E / wording / 課金 live 化 / デプロイ
+- 完了フェーズ: [Phase 1 概念, Phase 1.5 デザインSoT, Phase 2 設計, Phase 3 実装(no-keyスコープ), Phase 4 release-pre 監査, リリース(インフラ本番稼働)]
+- 次の推奨コマンド: /flow:feature or /flow:revise — (1) guest JWT auth (§1.7 自前署名) + (2) frontend↔backend 配線(services層 + MapPage→/api/structure→canvas)。両者一体。完了後 /flow:e2e + 再 /flow:release(再デプロイ)
+- 残: guest JWT auth(§1.7) / frontend↔backend 配線 / E2E / 視覚レビュー / Google OAuth custom creds(social使うなら) / 実課金1回確認(B-4) / 告知(promote)
 <!-- AUTO-GENERATED:END scenario-cursor -->
 
 ## 6. 変更履歴
