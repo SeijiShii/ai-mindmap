@@ -22,7 +22,7 @@ function HomePage() {
   return (
     <main className="p-4">
       <p className="mb-4 text-text-muted">
-        会議や講義を聞きながら、AI と往復でマインドマップを育てましょう。
+        聞きながら、書きながら。AIと一緒に考えをほどいていく。
       </p>
       <Link className="text-primary underline" to="/map/demo">
         マップをひらく
@@ -71,7 +71,7 @@ export function AppShell({
             actions={
               <>
                 <InfoButton>
-                  会議を聞きながら AI と往復で考えをほどくマインドマップです。
+                  聞いたこと・考えていることを、AIとマップにしていきます。手で自由に直せます。
                 </InfoButton>
                 {authControl}
               </>

@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { Button } from '../../components/ui/Button';
-import { StageSpinner } from '../../components/ui/StageSpinner';
+import { useState } from "react";
+import { Button } from "../../components/ui/Button";
+import { StageSpinner } from "../../components/ui/StageSpinner";
 
 /**
  * Capture UI (live-capture): manual text input + send. Live Web Speech wiring
@@ -14,12 +14,12 @@ export function CapturePanel({
   onSend: (text: string) => void;
   busy?: boolean;
 }) {
-  const [text, setText] = useState('');
+  const [text, setText] = useState("");
   const submit = () => {
     const t = text.trim();
     if (!t) return;
     onSend(t);
-    setText('');
+    setText("");
   };
   return (
     <div className="flex flex-col gap-2 border-t border-border bg-surface p-3">
@@ -32,8 +32,8 @@ export function CapturePanel({
         onChange={(e) => setText(e.target.value)}
       />
       <div className="flex justify-end">
-        <Button onClick={submit} disabled={busy || text.trim() === ''}>
-          AI に渡す
+        <Button onClick={submit} disabled={busy || text.trim() === ""}>
+          AIでマップに
         </Button>
       </div>
     </div>
