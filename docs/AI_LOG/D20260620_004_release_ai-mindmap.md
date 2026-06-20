@@ -68,3 +68,28 @@
     次サイクル = feature/revise で (1) guest JWT auth (§1.7) + (2) frontend↔backend 配線。
     両者は一体 (frontend が guest token を Bearer 送信 + /api を呼ぶ)。
 ```
+
+---
+## §1.7 guest JWT + frontend 配線 実装 + 本番検証 (2026-06-20 追記)
+
+```yaml
+- id: D20260620-010
+  command: /flow:release (継続: feature 実装 → 再デプロイ → smoke)
+  phase: 残 Class A 実装 + post-deploy smoke
+  question: guest JWT auth + frontend 配線 の本番検証
+  chosen: |
+    実装 (152 tests green, +16):
+    - §1.7 自前署名 guest JWT (HS256/GUEST_TOKEN_SECRET, src/auth/guest-token.ts) で Clerk 非セッション化
+      → Clerk prod 422 解消 + owner churn 原理的に解消 (sub が auth session 寿命と分離)
+    - api/auth/guest を provisionGuest 化 (Clerk createUser 撤去, MAU 非消費), 全 verifier を guest-or-clerk
+    - GET /api/maps?id= map detail, ensureUser で free quota seed, services/api.ts + MapWorkspace で配線
+    本番検証 (https://mindmap.givers.work, 全 200):
+    - /api/auth/guest → guestToken(229) + ownerId guest_*
+    - authed guest: /api/maps 200, POST create 200, ?id= detail 200, 無token 401 (gate 維持)
+    - B-4 実 OpenAI スモーク: structure に会議テキスト → AI が 4 ノード返却 + DB 保存 + reload で 4 nodes/3 edges 永続
+    = コア capture→AI構造化→canvas ループが本番で機能。
+  chosen_type: auto-recommended
+  context: |
+    残: ブラウザ UI 実機確認 (React render) / Stripe 全フロー実課金 100円 (B-4 大) /
+    Google OAuth custom creds (social 使うなら) / promote 告知。
+```

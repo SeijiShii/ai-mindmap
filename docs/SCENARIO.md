@@ -58,13 +58,13 @@ AI と人が往復で育てる共同編集型マインドマップの MVP を、
 ## 5. 現在地カーソル
 
 <!-- AUTO-GENERATED:BEGIN scenario-cursor -->
-- 現在フェーズ: Phase 4 公開準備 — 本番インフラ稼働済、ただしアプリは feature 未完(コアループ未配線)
-- 進行中ターゲット: https://mindmap.givers.work 本番稼働(SSL/DB/env/6 functions 起動, O51 解消)。残 Class A 2件 = (1) guest JWT auth §1.7 (Clerk prod 422 + owner churn), (2) frontend↔backend 配線(MapPage onSend stub)
+- 現在フェーズ: Phase 4 公開準備 — 本番稼働 + コアループ機能確認済 (capture→AI→canvas 本番200)
+- 進行中ターゲット: https://mindmap.givers.work 本番稼働。§1.7 guest JWT auth + frontend 配線完了、実 OpenAI でコアループ検証済 (4ノード生成+永続)。152 tests green
 - 最終更新セッション: D20260620_004_release_ai-mindmap
 - 最終更新時刻: 2026-06-20
-- 完了フェーズ: [Phase 1 概念, Phase 1.5 デザインSoT, Phase 2 設計, Phase 3 実装(no-keyスコープ), Phase 4 release-pre 監査, リリース(インフラ本番稼働)]
-- 次の推奨コマンド: /flow:feature or /flow:revise — (1) guest JWT auth (§1.7 自前署名) + (2) frontend↔backend 配線(services層 + MapPage→/api/structure→canvas)。両者一体。完了後 /flow:e2e + 再 /flow:release(再デプロイ)
-- 残: guest JWT auth(§1.7) / frontend↔backend 配線 / E2E / 視覚レビュー / Google OAuth custom creds(social使うなら) / 実課金1回確認(B-4) / 告知(promote)
+- 完了フェーズ: [概念, デザインSoT, 設計, 実装, release-pre監査, リリース(本番稼働), guest JWT auth(§1.7)+frontend配線(コアループ本番動作)]
+- 次の推奨コマンド: ブラウザ実機確認 → (social使うなら)Google OAuth custom creds → Stripe全フロー実課金100円(B-4) → /flow:promote 告知
+- 残: ブラウザUI実機確認 / Stripe実課金100円(B-4) / Google OAuth(social使うなら) / 告知(promote) / 視覚レビュー
 <!-- AUTO-GENERATED:END scenario-cursor -->
 
 ## 6. 変更履歴
