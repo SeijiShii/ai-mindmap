@@ -1,6 +1,13 @@
 import { and, eq, sql } from "drizzle-orm";
 import type { Db } from "../db/client";
-import { maps, nodes, edges, users, usageLog } from "../db/schema";
+import {
+  maps,
+  nodes,
+  edges,
+  users,
+  usageLog,
+  processedEvents,
+} from "../db/schema";
 import { assertOwner } from "../db/with-owner";
 import { estimateCost, ratesFromEnv } from "../cost/pricing";
 import { checkQuota, consumeQuota, type QuotaStore } from "../cost/quota";
@@ -128,6 +135,34 @@ export function serverDeps(
         now(),
         cfg,
       );
+    },
+    // Billing webhook idempotency (SPEC §4 二重補充防止)
+    processedEventStore: {
+      async has(eventId: string) {
+        return (
+          (
+            await db
+              .select()
+              .from(processedEvents)
+              .where(eq(processedEvents.id, eventId))
+              .limit(1)
+          ).length > 0
+        );
+      },
+      async mark(eventId: string) {
+        await db
+          .insert(processedEvents)
+          .values({ id: eventId })
+          .onConflictDoNothing();
+      },
+    },
+    async grantTopup(ownerId: string, tokens: number) {
+      await db
+        .update(users)
+        .set({
+          topupTokensRemaining: sql`${users.topupTokensRemaining} + ${tokens}`,
+        })
+        .where(eq(users.id, ownerId));
     },
     mapsBackend: {
       async listByOwner(ownerId) {

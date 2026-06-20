@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect } from "vitest";
 import {
   nodeSourceEnum,
   nodeStatusEnum,
@@ -10,36 +10,36 @@ import {
   edges,
   usageLog,
   schema,
-} from './schema';
+} from "./schema";
 
-describe('schema enums (SPEC §3.1)', () => {
-  it('node source = ai|human (N1/N3 source distinction)', () => {
-    expect(nodeSourceEnum.enumValues).toEqual(['ai', 'human']);
+describe("schema enums (SPEC §3.1)", () => {
+  it("node source = ai|human (N1/N3 source distinction)", () => {
+    expect(nodeSourceEnum.enumValues).toEqual(["ai", "human"]);
   });
-  it('node status = confirmed|suggested (AI suggestion vs human)', () => {
-    expect(nodeStatusEnum.enumValues).toEqual(['confirmed', 'suggested']);
+  it("node status = confirmed|suggested (AI suggestion vs human)", () => {
+    expect(nodeStatusEnum.enumValues).toEqual(["confirmed", "suggested"]);
   });
-  it('edge kind covers tree + 4 branch kinds (N4)', () => {
+  it("edge kind covers tree + 4 branch kinds (N4)", () => {
     expect(edgeKindEnum.enumValues).toEqual([
-      'tree',
-      'relation',
-      'opposition',
-      'question',
-      'example',
+      "tree",
+      "relation",
+      "opposition",
+      "question",
+      "example",
     ]);
   });
-  it('ai endpoint = structure|expand (usage_log)', () => {
-    expect(aiEndpointEnum.enumValues).toEqual(['structure', 'expand']);
+  it("ai endpoint = structure|expand (usage_log)", () => {
+    expect(aiEndpointEnum.enumValues).toEqual(["structure", "expand"]);
   });
 });
 
-describe('schema tables', () => {
-  it('exposes all five tables in the schema object', () => {
+describe("schema tables", () => {
+  it("exposes all tables in the schema object", () => {
     expect(Object.keys(schema).sort()).toEqual(
-      ['edges', 'maps', 'nodes', 'usageLog', 'users'].sort(),
+      ["edges", "maps", "nodes", "processedEvents", "usageLog", "users"].sort(),
     );
   });
-  it('maps/nodes/edges/usageLog carry owner/map scoping columns', () => {
+  it("maps/nodes/edges/usageLog carry owner/map scoping columns", () => {
     expect(maps.ownerId).toBeDefined();
     expect(nodes.mapId).toBeDefined();
     expect(nodes.parentId).toBeDefined();
